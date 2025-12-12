@@ -60,12 +60,12 @@ function App() {
     selectedGenre === "all"
       ? movies
       : movies.filter((movie) => {
-          const genreValue = movie.genre;
-          if (!genreValue) return false;
-          if (typeof genreValue === "string") return genreValue === selectedGenre;
-          if (genreValue?._id) return genreValue._id === selectedGenre;
-          return false;
-        });
+        const genreValue = movie.genre;
+        if (!genreValue) return false;
+        if (typeof genreValue === "string") return genreValue === selectedGenre;
+        if (genreValue?._id) return genreValue._id === selectedGenre;
+        return false;
+      });
 
   const getGenreName = (movie) => {
     if (!movie.genre) return "Unknown genre";
@@ -107,9 +107,8 @@ function App() {
           </div>
           <div className="genre-list">
             <button
-              className={`genre-button ${
-                selectedGenre === "all" ? "active" : ""
-              }`}
+              className={`genre-button ${selectedGenre === "all" ? "active" : ""
+                }`}
               onClick={() => setSelectedGenre("all")}
             >
               <span>All</span>
@@ -118,9 +117,8 @@ function App() {
             {genres.map((genre) => (
               <button
                 key={genre._id}
-                className={`genre-button ${
-                  selectedGenre === genre._id ? "active" : ""
-                }`}
+                className={`genre-button ${selectedGenre === genre._id ? "active" : ""
+                  }`}
                 onClick={() => setSelectedGenre(genre._id)}
               >
                 <span>{genre.name}</span>
